@@ -1,6 +1,6 @@
-package com.colak.springredistutorial.controller;
+package com.colak.springredistutorial.stringvalue.controller;
 
-import com.colak.springredistutorial.service.LockService;
+import com.colak.springredistutorial.stringvalue.service.LockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

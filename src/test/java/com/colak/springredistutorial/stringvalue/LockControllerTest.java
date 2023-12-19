@@ -1,4 +1,4 @@
-package com.colak.springredistutorial;
+package com.colak.springredistutorial.stringvalue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

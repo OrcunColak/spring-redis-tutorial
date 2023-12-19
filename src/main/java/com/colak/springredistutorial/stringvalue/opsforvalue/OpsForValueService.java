@@ -1,4 +1,4 @@
-package com.colak.springredistutorial.opsforvalue;
+package com.colak.springredistutorial.stringvalue.opsforvalue;
 
 import java.util.concurrent.TimeUnit;
 

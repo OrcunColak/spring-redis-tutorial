@@ -1,4 +1,4 @@
-package com.colak.springredistutorial.opsforvalue;
+package com.colak.springredistutorial.stringvalue.opsforvalue;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

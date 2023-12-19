@@ -1,4 +1,4 @@
-package com.colak.springredistutorial.config;
+package com.colak.springredistutorial.stringvalue.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

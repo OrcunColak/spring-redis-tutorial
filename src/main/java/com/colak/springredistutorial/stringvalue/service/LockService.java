@@ -1,6 +1,6 @@
-package com.colak.springredistutorial.service;
+package com.colak.springredistutorial.stringvalue.service;
 
-import com.colak.springredistutorial.opsforvalue.OpsForValueService;
+import com.colak.springredistutorial.stringvalue.opsforvalue.OpsForValueService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
