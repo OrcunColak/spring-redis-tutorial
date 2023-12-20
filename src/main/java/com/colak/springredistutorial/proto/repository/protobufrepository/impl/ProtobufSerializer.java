@@ -1,4 +1,4 @@
-package com.colak.springredistutorial.proto.repository.impl;
+package com.colak.springredistutorial.proto.repository.protobufrepository.impl;
 
 import com.google.protobuf.Message;
 import lombok.extern.slf4j.Slf4j;

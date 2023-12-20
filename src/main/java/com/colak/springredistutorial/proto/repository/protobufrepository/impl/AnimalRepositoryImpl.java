@@ -1,7 +1,7 @@
-package com.colak.springredistutorial.proto.repository.impl;
+package com.colak.springredistutorial.proto.repository.protobufrepository.impl;
 
 import com.colak.springredistutorial.proto.dto.AnimalDTO;
-import com.colak.springredistutorial.proto.repository.AnimalRepository;
+import com.colak.springredistutorial.proto.repository.protobufrepository.AnimalRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
 
 
     @Override
-    public void saveToRedisProtobuf(AnimalDTO animalDTO) {
+    public void save(AnimalDTO animalDTO) {
         redisProtobufTemplate.opsForHash()
                 .put(
                         REDIS_HASH_KEY,
@@ -26,7 +26,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
     }
 
     @Override
-    public AnimalDTO getFromRedisProtobuf(int id) {
+    public AnimalDTO findById(int id) {
         return (AnimalDTO) redisProtobufTemplate.opsForHash()
                 .get(
                         REDIS_HASH_KEY,

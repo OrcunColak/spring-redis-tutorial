@@ -1,13 +1,20 @@
 package com.colak.springredistutorial.proto.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
-@Getter
-@Setter
+@Data
+// by default, the key prefix is the fully qualified name of the class plus a colon).
+@RedisHash
 public class AnimalDTO {
 
+    @Id
     int id;
+
+    @Indexed
     String name;
+
     int age;
 }
