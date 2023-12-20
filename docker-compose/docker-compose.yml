@@ -12,4 +12,5 @@ services:
     image: redislabs/redisinsight
     container_name: redis-insight
     ports:
+      # http://localhost:8001
       - "127.0.0.1:8001:8001"
