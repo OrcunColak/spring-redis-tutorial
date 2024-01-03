@@ -12,8 +12,6 @@ public class AnimalServiceImpl implements AnimalService {
 
     private final AnimalRepository animalRepository;
 
-//    private final AnimalDTORepository animalRepository;
-
     @Override
     public AnimalDTO getAnimal(int id) {
         return animalRepository.findById(id);

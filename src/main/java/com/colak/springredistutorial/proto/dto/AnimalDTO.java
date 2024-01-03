@@ -14,6 +14,7 @@ public class AnimalDTO {
     int id;
 
     @Indexed
+//    @Searchable
     String name;
 
     int age;

@@ -12,14 +12,13 @@ public class AnimalRepositoryImpl implements AnimalRepository {
 
     private final RedisTemplate<String, Object> redisProtobufTemplate;
 
-    private final String REDIS_HASH_KEY = "myhash";
-
+    private static final String REDIS_MAP_NAME = "animal-map";
 
     @Override
     public void save(AnimalDTO animalDTO) {
         redisProtobufTemplate.opsForHash()
                 .put(
-                        REDIS_HASH_KEY,
+                        REDIS_MAP_NAME,
                         animalDTO.getId(),
                         animalDTO
                 );
@@ -29,7 +28,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
     public AnimalDTO findById(int id) {
         return (AnimalDTO) redisProtobufTemplate.opsForHash()
                 .get(
-                        REDIS_HASH_KEY,
+                        REDIS_MAP_NAME,
                         id
                 );
     }
