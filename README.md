@@ -17,6 +17,12 @@ https://medium.com/@mayilb77/design-a-real-time-leaderboard-system-for-millions-
 
 Leaderboard is for example top 10 players. It uses ZSetOperations
 
+# Pub/Sub Example
+
+Original idea is from
+
+https://towardsdev.com/cqrs-in-action-building-robust-micro-services-with-spring-boot-68faa9133a4d
+
 # HashForValue With ProtoBuf Serializer
 
 put()  
