@@ -15,9 +15,12 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.shaded.org.awaitility.Awaitility;
 import org.testcontainers.utility.DockerImageName;
 
+/**
+ * Test that uses bean override for listener
+ */
 @SpringBootTest
 @Testcontainers
-class RedisPublishServiceTest {
+class RedisPublishServiceUsingBeanOverrideTest {
 
     @Container
     @ServiceConnection
