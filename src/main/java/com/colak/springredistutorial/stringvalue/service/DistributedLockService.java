@@ -7,19 +7,27 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
+@Service
 @RequiredArgsConstructor
 @Slf4j
-@Service
-public class LockService {
+public class DistributedLockService {
 
     private final OpsForValueService opsForValueService;
 
+    public boolean acquireLock(String lockKey, String value, long timeout, TimeUnit unit) {
+        return opsForValueService.setIfAbsent(lockKey, value, timeout, unit);
+    }
+
+    public void releaseLock(String lockKey) {
+        opsForValueService.delete(lockKey);
+    }
+
     public boolean performWithLock(String lockKey) throws InterruptedException {
         boolean result = false;
-        if (Boolean.TRUE.equals(opsForValueService.setIfAbsent(lockKey,
+        if (acquireLock(lockKey,
                 "my_value",
                 15000,
-                TimeUnit.MILLISECONDS))) {
+                TimeUnit.MILLISECONDS)) {
 
             log.info("Lock acquired.");
 
@@ -28,7 +36,7 @@ public class LockService {
             log.info("Operation completed.");
 
             // if you want, you can release lock.
-            opsForValueService.delete(lockKey);
+            releaseLock(lockKey);
 
             result = true;
         } else {

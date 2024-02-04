@@ -1,6 +1,6 @@
 package com.colak.springredistutorial.stringvalue.controller;
 
-import com.colak.springredistutorial.stringvalue.service.LockService;
+import com.colak.springredistutorial.stringvalue.service.DistributedLockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/lock")
 public class LockController {
 
-    private final LockService lockService;
+    private final DistributedLockService distributedLockService;
 
     @GetMapping("/perform/{lockKey}")
     public String performOperation(@PathVariable String lockKey) throws InterruptedException {
         String result = "Operation failed";
-        if (lockService.performWithLock(lockKey)) {
+        if (distributedLockService.performWithLock(lockKey)) {
             result = "Operation completed";
         }
         return result;
