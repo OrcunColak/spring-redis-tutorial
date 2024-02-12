@@ -10,6 +10,11 @@ https://medium.com/@firat.gursoy/store-data-as-protobuf-on-redis-with-spring-boo
 delete()  
 setIfAbsent(...)
 
+# OpsForValue - Distributed Id Generator
+
+The original idea is from  
+https://medium.com/@georgechmr/distributed-unique-id-java-version-e74ee36d23bd
+
 # ZSetOperations - LeaderBoard
 
 Original idea is from  
