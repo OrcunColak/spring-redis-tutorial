@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Redission client provides lock API
+ * See <a href="https://gurselgazii.medium.com/implementing-distributed-locks-in-spring-boot-with-redisson-2967149bcb7c">...</a>
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
