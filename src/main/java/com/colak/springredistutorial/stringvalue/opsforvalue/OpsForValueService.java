@@ -27,6 +27,14 @@ public class OpsForValueService {
         return redisTemplate.delete(key);
     }
 
+    public Object get(String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
+
+    public void set(String key, String value) {
+        redisTemplate.opsForValue().set(key, value);
+    }
+
     public Boolean setIfAbsent(String key, String value, long timeout, TimeUnit unit) {
         return redisTemplate.opsForValue().setIfAbsent(key, value, timeout, unit);
     }
