@@ -1,4 +1,4 @@
-package com.colak.springredistutorial.repository.domain;
+package com.colak.springredistutorial.crudrepository.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +11,9 @@ import org.springframework.data.redis.core.index.Indexed;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Customer has accounts. Accounts have Transactions
+ */
 @RedisHash("customer")
 @AllArgsConstructor
 @NoArgsConstructor

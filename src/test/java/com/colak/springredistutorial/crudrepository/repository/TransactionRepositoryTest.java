@@ -1,7 +1,6 @@
-package com.colak.springredistutorial.repository.repository;
+package com.colak.springredistutorial.crudrepository.repository;
 
-import com.colak.springredistutorial.repository.domain.Account;
-import com.colak.springredistutorial.repository.domain.Customer;
+import com.colak.springredistutorial.crudrepository.domain.Transaction;
 import com.redis.testcontainers.RedisContainer;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -14,49 +13,44 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+// The @DataRedisTest annotation injects repository beans
 @DataRedisTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Testcontainers
-class CustomerRepositoryTest {
+class TransactionRepositoryTest {
 
     @Container
     @ServiceConnection
     private static final RedisContainer REDIS_CONTAINER = new RedisContainer(DockerImageName.parse("redis:latest"));
 
     @Autowired
-    private CustomerRepository repository;
+    private TransactionRepository repository;
 
     @Test
     @Order(1)
     void shouldAdd() {
-        Customer customer = new Customer(1L, "80010121098", "John Smith");
-        customer.addAccount(new Account(1L, "1234567890", 2000));
-        customer.addAccount(new Account(2L, "1234567891", 4000));
-        customer.addAccount(new Account(3L, "1234567892", 6000));
-        customer = repository.save(customer);
-        assertNotNull(customer);
+        Transaction transaction = new Transaction(1L, 1000, new Date(), 20L, 40L);
+        transaction = repository.save(transaction);
+        assertNotNull(transaction);
     }
 
     @Test
     @Order(2)
-    void shouldFindByAccounts() {
-        List<Customer> customers = repository.findByAccountsId(3L);
-        assertEquals(1, customers.size());
-        Customer customer = customers.get(0);
-        assertNotNull(customer);
-        assertEquals(1, customer.getId().longValue());
+    void shouldFindByFromAccountId() {
+        List<Transaction> transactions = repository.findByFromAccountId(20L);
+        assertEquals(1, transactions.size());
     }
 
     @Test
     @Order(3)
-    void shouldFindByExternal() {
-        Customer customer = repository.findByExternalId("80010121098");
-        assertNotNull(customer);
-        assertEquals(1, customer.getId().longValue());
+    void shouldFindByToAccountId() {
+        List<Transaction> transactions = repository.findByToAccountId(40L);
+        assertEquals(1, transactions.size());
     }
 }

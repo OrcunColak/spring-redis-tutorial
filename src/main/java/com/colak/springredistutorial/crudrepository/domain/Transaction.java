@@ -1,4 +1,4 @@
-package com.colak.springredistutorial.repository.domain;
+package com.colak.springredistutorial.crudrepository.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
