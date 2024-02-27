@@ -25,7 +25,7 @@ class OpsForValueRepositoryTest {
 
     @Test
     void testGenerateId() {
-        Long result = opsForValueRepository.generateId("mycounter");
+        Long result = opsForValueRepository.increment("mycounter");
         Assertions.assertEquals(Long.valueOf(1), result);
     }
 }

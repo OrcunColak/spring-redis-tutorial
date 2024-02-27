@@ -4,10 +4,11 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 /**
- * See : https://avi2507.medium.com/unlocking-the-power-of-redis-in-spring-boot-a-comprehensive-guide-with-jedis-1c7078557ae0
+ * See : <a href="https://avi2507.medium.com/unlocking-the-power-of-redis-in-spring-boot-a-comprehensive-guide-with-jedis-1c7078557ae0">...</a>
  * 1.Strings are the basic key-value pairs which can store TEXT, JSON and binary data.
  * <p>
  * 2. Lists are the collection of ordered elements. We can perform operations like pushing elements from front and back,
@@ -32,6 +33,10 @@ public class OpsForValueRepository {
         return redisTemplate.delete(key);
     }
 
+    public void expire (String key, Duration duration) {
+        valueOperations.getAndExpire(key, duration);
+    }
+
     public Object get(String key) {
         return valueOperations.get(key);
     }
@@ -44,7 +49,7 @@ public class OpsForValueRepository {
         return valueOperations.setIfAbsent(key, value, timeout, unit);
     }
 
-    public Long generateId(String key) {
+    public Long increment(String key) {
         valueOperations.setIfAbsent(key, 0);
         return valueOperations.increment(key, 1);
     }
