@@ -1,7 +1,7 @@
-package com.colak.springredistutorial.leaderboard.service;
+package com.colak.springredistutorial.sortedset.leaderboard.service;
 
-import com.colak.springredistutorial.leaderboard.ZSetRepository;
-import com.colak.springredistutorial.leaderboard.dto.GamerDTO;
+import com.colak.springredistutorial.sortedset.leaderboard.ZSetRepository;
+import com.colak.springredistutorial.sortedset.leaderboard.dto.GamerDTO;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;

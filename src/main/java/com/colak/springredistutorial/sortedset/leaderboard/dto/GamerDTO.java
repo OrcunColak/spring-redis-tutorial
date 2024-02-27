@@ -1,4 +1,4 @@
-package com.colak.springredistutorial.leaderboard.dto;
+package com.colak.springredistutorial.sortedset.leaderboard.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

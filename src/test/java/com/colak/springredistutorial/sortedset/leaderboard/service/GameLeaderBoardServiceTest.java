@@ -1,6 +1,6 @@
-package com.colak.springredistutorial.leaderboard.service;
+package com.colak.springredistutorial.sortedset.leaderboard.service;
 
-import com.colak.springredistutorial.leaderboard.dto.GamerDTO;
+import com.colak.springredistutorial.sortedset.leaderboard.dto.GamerDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

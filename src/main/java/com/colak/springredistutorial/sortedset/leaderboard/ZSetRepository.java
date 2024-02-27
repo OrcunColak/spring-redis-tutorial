@@ -1,4 +1,4 @@
-package com.colak.springredistutorial.leaderboard;
+package com.colak.springredistutorial.sortedset.leaderboard;
 
 import org.springframework.data.redis.core.ZSetOperations;
 
