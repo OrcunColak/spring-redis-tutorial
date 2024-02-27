@@ -45,7 +45,6 @@ public class DistributedLockService {
             result = true;
         } else {
             log.error("Failed to acquire lock. Resource is busy.");
-
         }
         return result;
     }
