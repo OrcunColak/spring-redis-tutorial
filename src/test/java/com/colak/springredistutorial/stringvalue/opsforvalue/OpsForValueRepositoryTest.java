@@ -1,5 +1,6 @@
 package com.colak.springredistutorial.stringvalue.opsforvalue;
 
+import com.colak.springredistutorial.stringvalue.OpsForValueRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,23 +9,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
-class OpsForValueServiceTest {
+class OpsForValueRepositoryTest {
     @Autowired
-    private OpsForValueService opsForValueService;
+    private OpsForValueRepository opsForValueRepository;
 
     @Test
     void testDelete() {
         String key = "key1";
-        Boolean result = opsForValueService.setIfAbsent(key, "value", 5L, TimeUnit.SECONDS);
+        Boolean result = opsForValueRepository.setIfAbsent(key, "value", 5L, TimeUnit.SECONDS);
         Assertions.assertEquals(Boolean.TRUE, result);
 
-        result = opsForValueService.delete(key);
+        result = opsForValueRepository.delete(key);
         Assertions.assertEquals(Boolean.TRUE, result);
     }
 
     @Test
     void testGenerateId() {
-        Long result = opsForValueService.generateId("mycounter");
+        Long result = opsForValueRepository.generateId("mycounter");
         Assertions.assertEquals(Long.valueOf(1), result);
     }
 }

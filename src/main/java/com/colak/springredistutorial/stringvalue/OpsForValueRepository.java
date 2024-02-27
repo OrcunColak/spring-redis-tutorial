@@ -1,6 +1,5 @@
-package com.colak.springredistutorial.stringvalue.opsforvalue;
+package com.colak.springredistutorial.stringvalue;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -17,31 +16,36 @@ import java.util.concurrent.TimeUnit;
  * - A Set in Redis is a collection of unique elements with no specific order. Redis sets supports various operations
  * such as adding, removing, and checking for the existence of elements.
  */
-@RequiredArgsConstructor
 @Service
-public class OpsForValueService {
+public class OpsForValueRepository {
 
     private final RedisTemplate<String, Object> redisTemplate;
+
+    private final ValueOperations<String, Object> valueOperations;
+
+    public OpsForValueRepository(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+        this.valueOperations = redisTemplate.opsForValue();
+    }
 
     public Boolean delete(String key) {
         return redisTemplate.delete(key);
     }
 
     public Object get(String key) {
-        return redisTemplate.opsForValue().get(key);
+        return valueOperations.get(key);
     }
 
     public void set(String key, String value) {
-        redisTemplate.opsForValue().set(key, value);
+        valueOperations.set(key, value);
     }
 
     public Boolean setIfAbsent(String key, String value, long timeout, TimeUnit unit) {
-        return redisTemplate.opsForValue().setIfAbsent(key, value, timeout, unit);
+        return valueOperations.setIfAbsent(key, value, timeout, unit);
     }
 
     public Long generateId(String key) {
-        ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
-        opsForValue.setIfAbsent(key, 0);
-        return opsForValue.increment(key, 1);
+        valueOperations.setIfAbsent(key, 0);
+        return valueOperations.increment(key, 1);
     }
 }

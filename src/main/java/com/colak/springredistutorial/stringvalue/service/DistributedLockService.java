@@ -1,6 +1,6 @@
 package com.colak.springredistutorial.stringvalue.service;
 
-import com.colak.springredistutorial.stringvalue.opsforvalue.OpsForValueService;
+import com.colak.springredistutorial.stringvalue.OpsForValueRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,14 +16,14 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class DistributedLockService {
 
-    private final OpsForValueService opsForValueService;
+    private final OpsForValueRepository opsForValueRepository;
 
     public boolean acquireLock(String lockKey, String value, long timeout, TimeUnit unit) {
-        return opsForValueService.setIfAbsent(lockKey, value, timeout, unit);
+        return opsForValueRepository.setIfAbsent(lockKey, value, timeout, unit);
     }
 
     public void releaseLock(String lockKey) {
-        opsForValueService.delete(lockKey);
+        opsForValueRepository.delete(lockKey);
     }
 
     public boolean performWithLock(String lockKey) throws InterruptedException {
