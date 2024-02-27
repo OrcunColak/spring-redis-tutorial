@@ -1,12 +1,14 @@
 package com.colak.springredistutorial.leaderboard.service;
 
 import com.colak.springredistutorial.leaderboard.dto.GamerDTO;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class GameLeaderBoardServiceTest {
@@ -23,14 +25,14 @@ class GameLeaderBoardServiceTest {
 
         gameLeaderBoardService.add(gamer10);
         List<GamerDTO> result = gameLeaderBoardService.add(gamer9);
-        Assertions.assertEquals(expectedList, result);
+        assertEquals(expectedList, result);
 
         result = gameLeaderBoardService.getAll();
-        Assertions.assertEquals(expectedList, result);
+        assertEquals(expectedList, result);
 
         result = gameLeaderBoardService.getTop10();
-        Assertions.assertEquals(expectedList, result);
+        assertEquals(expectedList, result);
 
-        gameLeaderBoardService.deleteAll();
+        assertTrue(gameLeaderBoardService.deleteAll());
     }
 }

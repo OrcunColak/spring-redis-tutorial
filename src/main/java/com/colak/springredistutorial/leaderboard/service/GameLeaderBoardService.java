@@ -20,8 +20,7 @@ public class GameLeaderBoardService {
     private final ZSetRepository<String, String> repository;
 
     private static final String LEADER_BOARD_NAME = "leaderboard";
-    private static final long START = 0;
-    private static final long END = 10;
+
 
     public GameLeaderBoardService(RedisTemplate<String, String> redisTemplate) {
         repository = new ZSetRepository<>(LEADER_BOARD_NAME, redisTemplate.opsForZSet());
@@ -47,8 +46,8 @@ public class GameLeaderBoardService {
         return mapLeaderBoardToList(leaderBoard);
     }
 
-    public void deleteAll() {
-        repository.deleteAll();
+    public Boolean deleteAll() {
+        return repository.deleteAll();
     }
 
     private List<GamerDTO> mapLeaderBoardToList(Set<ZSetOperations.TypedTuple<String>> leaderBoard) {

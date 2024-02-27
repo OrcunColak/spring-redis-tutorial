@@ -30,8 +30,8 @@ public class ZSetRepository<K, V> {
         return zSetOperations.reverseRangeWithScores(key, 0, 10);
     }
 
-    public Set<ZSetOperations.TypedTuple<V>> getRangeWithScores(long start, long end) {
-        return zSetOperations.rangeWithScores(key, start, end);
+    public Set<ZSetOperations.TypedTuple<V>> getTopN(long start, long end) {
+        return zSetOperations.reverseRangeWithScores(key, start, end);
     }
 
     public Boolean deleteAll() {
