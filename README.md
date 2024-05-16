@@ -8,6 +8,11 @@ https://medium.com/@mertcakmak2/distributed-lock-schedule-lock-with-redis-and-sp
 The original idea is from  
 https://medium.com/@georgechmr/distributed-unique-id-java-version-e74ee36d23bd
 
+# OpsForValue - Distributed Lock
+
+The original idea is from
+https://gurselgazii.medium.com/implementing-distributed-locks-in-spring-boot-with-redisson-2967149bcb7c
+
 # ZSetOperations - LeaderBoard
 
 The original idea is from  
