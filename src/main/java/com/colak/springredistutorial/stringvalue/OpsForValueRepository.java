@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -33,7 +34,7 @@ public class OpsForValueRepository {
         return redisTemplate.delete(key);
     }
 
-    public void expire (String key, Duration duration) {
+    public void expire(String key, Duration duration) {
         valueOperations.getAndExpire(key, duration);
     }
 
@@ -52,5 +53,14 @@ public class OpsForValueRepository {
     public Long increment(String key) {
         valueOperations.setIfAbsent(key, 0);
         return valueOperations.increment(key, 1);
+    }
+
+    public int keySize() {
+        Set<String> keys = redisTemplate.keys("*");
+        int result = 0;
+        if (keys != null) {
+            result = keys.size();
+        }
+        return result;
     }
 }
